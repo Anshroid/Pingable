@@ -2,4 +2,4 @@
 
 import Host.main as module
 
-await module.main()
+module.main()
