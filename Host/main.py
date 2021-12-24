@@ -1,8 +1,10 @@
 import asyncio
+import threading
 
 import control
 import pinger
 import bot
+import keepalive
 
 
 def main():
@@ -14,6 +16,9 @@ def main():
 
     control_thread = control.ControlThread(state_event, client)
     control_thread.start()
+
+    keepalive_thread = threading.Thread(target=keepalive.app.run, args=(3051, ))
+    keepalive_thread.start()
 
     client.run(client.secret)
 
