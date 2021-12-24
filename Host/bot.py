@@ -2,6 +2,7 @@ import asyncio
 
 import discord
 from typing import List
+import os
 
 import pinger
 
@@ -14,7 +15,10 @@ class Bot(discord.Client):
     def __init__(self, loop, state_event, **kwargs):
         super().__init__(**kwargs)
         asyncio.set_event_loop(loop)
-        self.secret = open("secret", "r").readline().strip("\n")
+        try:
+            self.secret = open("secret", "r").readline().strip("\n")
+        except FileNotFoundError:
+            self.secret = os.environ['BOT_TOKEN']
         self.subscribed_channels: List[discord.DMChannel] = []
         self.state_event = state_event
 
