@@ -17,7 +17,7 @@ def main():
     control_thread = control.ControlThread(state_event, client)
     control_thread.start()
 
-    keepalive_thread = threading.Thread(target=keepalive.app.run, args=(3051, ))
+    keepalive_thread = threading.Thread(target=keepalive.app.run, kwargs={"host": "0.0.0.0", "port":3051})
     keepalive_thread.start()
 
     client.run(client.secret)

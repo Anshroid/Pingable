@@ -32,7 +32,7 @@ class Pinger(threading.Thread):
         while not self.stopped:
             time.sleep(5)
             try:
-                requests.get("http://localhost:3050")
+                requests.get("http://server.anshroid.tech:3050")
             except requests.exceptions.ConnectionError:
                 self.set_off(True)
                 continue
