@@ -32,14 +32,11 @@ class Pinger(threading.Thread):
         while not self.stopped:
             time.sleep(5)
             try:
-                print("request")
                 requests.get("http://localhost:3050")
             except requests.exceptions.ConnectionError:
                 self.set_off(True)
-                print("off")
                 continue
             self.set_off(False)
-            print("on")
 
     def stop(self):
         self.stopped = True
