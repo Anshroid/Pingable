@@ -1,2 +1,2 @@
 # Pingable
-A Discord Bot crossed with a Webserver-Client setup to allow the sending of discord messages without an actual discord client. Rudimentarily bypasses discord restrictions on networks.
+A Discord Bot that pings a locally-hosted webserver to check if said server is online and connected to WiFi.
